@@ -1,13 +1,14 @@
 const Store = require('openrecord/store/mysql');
 const express = require('express');
 const bodyParser = require('body-parser');
+const secrets = require('./secrets.json');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 const store = new Store({
     host: 'localhost',
-    user: 'root',
-    password: '1Twotbgrar!',
+    user: secrets.username,
+    password: secrets.password,
     database: 'dnd',
     models: [
         require('./models/Spell')
